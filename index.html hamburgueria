@@ -1,0 +1,666 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brasa Nobre Burger</title>
+
+<style>
+:root {
+  --fundo: #100d0b;
+  --card: #201812;
+  --laranja: #ff6a2a;
+  --dourado: #ffbd59;
+  --branco: #fff4e5;
+  --cinza: #c9b9a5;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: var(--fundo);
+  color: var(--branco);
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+header {
+  background: #100d0bf2;
+  padding: 18px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-bottom: 1px solid #ffffff20;
+}
+
+.logo {
+  font-size: 23px;
+  font-weight: 900;
+}
+
+.logo span {
+  color: var(--laranja);
+}
+
+nav {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+nav a {
+  color: var(--cinza);
+  font-size: 14px;
+}
+
+nav a:hover {
+  color: var(--dourado);
+}
+
+.botao {
+  display: inline-block;
+  background: var(--laranja);
+  color: #1b0c05;
+  font-weight: bold;
+  padding: 12px 20px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.botao:hover {
+  background: var(--dourado);
+  transform: translateY(-2px);
+}
+
+.hero {
+  min-height: 570px;
+  padding: 70px 7%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 40px;
+}
+
+.destaque {
+  color: var(--dourado);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.hero h1 {
+  font-size: clamp(44px, 6vw, 76px);
+  line-height: 1;
+  margin: 20px 0;
+}
+
+.hero h1 span {
+  color: var(--laranja);
+}
+
+.hero p, .descricao {
+  color: var(--cinza);
+  margin-bottom: 22px;
+}
+
+.hero img {
+  width: 100%;
+  height: 410px;
+  object-fit: cover;
+  border-radius: 25px 25px 80px 25px;
+  box-shadow: 0 20px 60px #0008;
+}
+
+section {
+  padding: 75px 7%;
+}
+
+.escura {
+  background: #19130f;
+}
+
+.titulo {
+  font-size: clamp(30px, 4vw, 44px);
+  margin: 8px 0 15px;
+}
+
+.subtitulo {
+  color: var(--cinza);
+  max-width: 650px;
+  margin-bottom: 30px;
+}
+
+.produtos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.produto {
+  background: var(--card);
+  border: 1px solid #ffffff18;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: .25s;
+}
+
+.produto:hover {
+  transform: translateY(-5px);
+  border-color: var(--laranja);
+}
+
+.produto img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.conteudo {
+  padding: 22px;
+}
+
+.etiqueta {
+  color: var(--dourado);
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.produto h3 {
+  font-size: 22px;
+  margin: 10px 0;
+}
+
+.produto p {
+  color: var(--cinza);
+  font-size: 14px;
+  min-height: 65px;
+  margin-bottom: 15px;
+}
+
+.preco {
+  color: var(--dourado);
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.linha-preco {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.promocao {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: linear-gradient(120deg, #451d0c, #21140d);
+  border-radius: 25px;
+  overflow: hidden;
+  align-items: center;
+}
+
+.promocao .texto {
+  padding: 40px;
+}
+
+.promocao h2 {
+  font-size: 42px;
+  line-height: 1.1;
+  margin: 15px 0;
+}
+
+.promocao img {
+  width: 100%;
+  height: 100%;
+  min-height: 330px;
+  object-fit: cover;
+}
+
+.antigo {
+  color: #a99a89;
+  text-decoration: line-through;
+  margin-right: 10px;
+}
+
+.sobre {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 45px;
+  align-items: center;
+}
+
+.sobre img {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  border-radius: 25px;
+}
+
+.estatisticas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.estatistica {
+  background: var(--card);
+  border: 1px solid #ffffff18;
+  padding: 16px;
+  border-radius: 15px;
+}
+
+.estatistica strong {
+  display: block;
+  color: var(--dourado);
+  font-size: 20px;
+}
+
+.estatistica small {
+  color: var(--cinza);
+}
+
+.novidade {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--card);
+  border-radius: 25px;
+  overflow: hidden;
+  border: 1px solid #ffffff20;
+}
+
+.novidade img {
+  width: 100%;
+  height: 100%;
+  min-height: 350px;
+  object-fit: cover;
+}
+
+.novidade .texto {
+  padding: 35px;
+}
+
+.novidade h3 {
+  font-size: 38px;
+  line-height: 1.1;
+  margin: 15px 0;
+}
+
+.curiosidades {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.curiosidade {
+  padding: 25px;
+  background: var(--card);
+  border: 1px solid #ffffff18;
+  border-radius: 20px;
+}
+
+.curiosidade .icone {
+  font-size: 32px;
+}
+
+.curiosidade h3 {
+  margin: 12px 0;
+}
+
+.curiosidade p {
+  color: var(--cinza);
+}
+
+.aviso {
+  color: #a99a89;
+  font-size: 12px;
+  margin-top: 20px;
+}
+
+footer {
+  padding: 30px 7%;
+  border-top: 1px solid #ffffff20;
+  color: var(--cinza);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+#mensagem {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--branco);
+  color: #1b1009;
+  padding: 15px 22px;
+  border-radius: 30px;
+  display: none;
+  z-index: 20;
+  width: max-content;
+  max-width: 90%;
+}
+
+@media (max-width: 800px) {
+  header {
+    flex-direction: column;
+  }
+
+  .hero, .sobre, .promocao, .novidade {
+    grid-template-columns: 1fr;
+  }
+
+  .produtos, .curiosidades {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .hero img {
+    height: 320px;
+  }
+}
+
+@media (max-width: 520px) {
+  .produtos, .curiosidades, .estatisticas {
+    grid-template-columns: 1fr;
+  }
+
+  nav {
+    justify-content: center;
+  }
+
+  .hero h1 {
+    font-size: 46px;
+  }
+
+  .promocao .texto, .novidade .texto {
+    padding: 25px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a href="#inicio" class="logo">BRASA <span>NOBRE</span></a>
+
+  <nav>
+    <a href="#inicio">Início</a>
+    <a href="#cardapio">Cardápio</a>
+    <a href="#promocoes">Promoções</a>
+    <a href="#sobre">Sobre nós</a>
+    <a href="#novidades">Novidades</a>
+    <a href="#curiosidades">Curiosidades</a>
+  </nav>
+
+  <a class="botao" href="#cardapio">Ver cardápio</a>
+</header>
+
+<main>
+
+<section class="hero" id="inicio">
+  <div>
+    <div class="destaque">Artesanal • Feito na brasa</div>
+    <h1>O sabor que vem da <span>brasa.</span></h1>
+    <p>
+      Carne suculenta, queijo derretido e combinações
+      especiais para transformar sua fome em uma
+      experiência inesquecível.
+    </p>
+    <a class="botao" href="#cardapio">Conhecer o cardápio</a>
+  </div>
+
+  <img
+    src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1000&q=85"
+    alt="Hambúrguer artesanal suculento">
+</section>
+
+<section class="escura" id="cardapio">
+  <div class="destaque">Feitos para dar água na boca</div>
+  <h2 class="titulo">Os favoritos da casa</h2>
+  <p class="subtitulo">
+    Ingredientes selecionados, receitas especiais e
+    aquele sabor marcante de hambúrguer artesanal.
+  </p>
+
+  <div class="produtos">
+
+    <article class="produto">
+      <img src="https://images.unsplash.com/photo-1553979459-d2229ba7433a?auto=format&fit=crop&w=800&q=85" alt="Brasa Clássico">
+      <div class="conteudo">
+        <span class="etiqueta">CLÁSSICO</span>
+        <h3>Brasa Clássico</h3>
+        <p>Blend bovino de 160 g, cheddar, alface, tomate e molho especial no pão brioche.</p>
+        <div class="linha-preco">
+          <span class="preco">R$ 24,90</span>
+          <button class="botao" onclick="pedir('Brasa Clássico')">Selecionar</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="produto">
+      <img src="https://images.unsplash.com/photo-1561758033-d89a9ad46330?auto=format&fit=crop&w=800&q=85" alt="Cheddar Vulcão">
+      <div class="conteudo">
+        <span class="etiqueta">MAIS PEDIDO</span>
+        <h3>Cheddar Vulcão</h3>
+        <p>Blend bovino de 180 g, cheddar cremoso, cebola caramelizada e maionese defumada.</p>
+        <div class="linha-preco">
+          <span class="preco">R$ 29,90</span>
+          <button class="botao" onclick="pedir('Cheddar Vulcão')">Selecionar</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="produto">
+      <img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?auto=format&fit=crop&w=800&q=85" alt="Duplo Braseiro">
+      <div class="conteudo">
+        <span class="etiqueta">FOME GRANDE</span>
+        <h3>Duplo Braseiro</h3>
+        <p>Dois hambúrgueres, queijo derretido, picles crocante e molho especial da casa.</p>
+        <div class="linha-preco">
+          <span class="preco">R$ 34,90</span>
+          <button class="botao" onclick="pedir('Duplo Braseiro')">Selecionar</button>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section id="promocoes">
+  <div class="promocao">
+    <div class="texto">
+      <div class="destaque">Oferta especial</div>
+      <h2>Fome grande.<br>Preço pequeno.</h2>
+      <p class="descricao">
+        Brasa Clássico + batata frita + refrigerante em lata.
+        O combo perfeito para compartilhar.
+      </p>
+      <p>
+        <span class="antigo">R$ 39,70</span>
+        <span class="preco">R$ 32,90</span>
+      </p>
+      <br>
+      <button class="botao" onclick="pedir('Combo Brasa')">
+        Quero meu combo
+      </button>
+    </div>
+
+    <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=1000&q=85" alt="Combo de hambúrguer">
+  </div>
+
+  <p class="aviso">
+    Promoções e preços fictícios, criados para demonstração.
+  </p>
+</section>
+
+<section class="escura" id="sobre">
+  <div class="sobre">
+    <img src="https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=1000&q=85" alt="Hambúrguer artesanal preparado com cuidado">
+
+    <div>
+      <div class="destaque">Nossa história</div>
+      <h2 class="titulo">Mais que um hambúrguer. Um ritual de sabor.</h2>
+
+      <p class="descricao">
+        A Brasa Nobre nasceu da paixão por hambúrgueres
+        artesanais. Nossa ideia é unir carne suculenta,
+        ingredientes frescos e receitas cheias de personalidade.
+      </p>
+
+      <p class="descricao">
+        Cada detalhe importa: do pão tostado ao molho especial.
+        Queremos que cada mordida seja uma experiência deliciosa.
+      </p>
+
+      <div class="estatisticas">
+        <div class="estatistica">
+          <strong>100%</strong>
+          <small>Foco no sabor</small>
+        </div>
+        <div class="estatistica">
+          <strong>Artesanal</strong>
+          <small>Nosso estilo</small>
+        </div>
+        <div class="estatistica">
+          <strong>Na hora</strong>
+          <small>Nosso cuidado</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="novidades">
+  <div class="destaque">Novidade da casa</div>
+  <h2 class="titulo">Uma criação especial</h2>
+  <p class="subtitulo">
+    Conheça o hambúrguer criado especialmente para o nosso cardápio.
+  </p>
+
+  <div class="novidade">
+    <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1000&q=85" alt="Hambúrguer especial">
+
+    <div class="texto">
+      <span class="etiqueta">LANÇAMENTO</span>
+      <h3>O Nobre Mel & Brasa</h3>
+
+      <p class="descricao">
+        Blend bovino de 180 g, queijo meia-cura, bacon crocante,
+        cebola roxa e molho de mel apimentado no pão brioche tostado.
+      </p>
+
+      <p class="preco">R$ 36,90</p>
+      <br>
+
+      <button class="botao" onclick="pedir('Nobre Mel & Brasa')">
+        Experimentar
+      </button>
+    </div>
+  </div>
+</section>
+
+<section class="escura" id="curiosidades">
+  <div class="destaque">Por trás da mordida</div>
+  <h2 class="titulo">Curiosidades da Brasa</h2>
+  <p class="subtitulo">
+    Descubra um pouco mais sobre a marca e o universo dos hambúrgueres.
+  </p>
+
+  <div class="curiosidades">
+
+    <article class="curiosidade">
+      <div class="icone">📅</div>
+      <h3>Quando foi criada?</h3>
+      <p>
+        Na história fictícia da marca, a Brasa Nobre foi criada
+        em 2024 por três amigos apaixonados por hambúrgueres.
+      </p>
+    </article>
+
+    <article class="curiosidade">
+      <div class="icone">⭐</div>
+      <h3>Avaliação da casa</h3>
+      <p>
+        Nota ilustrativa de 4,8/5 para a apresentação do site.
+        Essa avaliação não representa clientes reais.
+      </p>
+    </article>
+
+    <article class="curiosidade">
+      <div class="icone">🥩</div>
+      <h3>O segredo da suculência</h3>
+      <p>
+        Uma chapa bem quente ajuda a dourar a superfície
+        da carne e criar uma crosta saborosa.
+      </p>
+    </article>
+
+  </div>
+
+  <p class="aviso">
+    Nome, história, avaliações e preços são fictícios.
+  </p>
+</section>
+
+</main>
+
+<footer>
+  <div>
+    <strong>BRASA <span style="color:#ff6a2a">NOBRE</span></strong>
+    <p>O sabor que vem da brasa.</p>
+  </div>
+
+  <p>© <span id="ano"></span> Brasa Nobre Burger</p>
+
+  <a href="#inicio">Voltar ao topo ↑</a>
+</footer>
+
+<div id="mensagem" role="status"></div>
+
+<script>
+document.getElementById("ano").textContent =
+  new Date().getFullYear();
+
+let temporizador;
+
+function pedir(produto) {
+  const mensagem = document.getElementById("mensagem");
+
+  mensagem.textContent =
+    produto + " selecionado! Este site é uma demonstração.";
+
+  mensagem.style.display = "block";
+
+  clearTimeout(temporizador);
+
+  temporizador = setTimeout(function() {
+    mensagem.style.display = "none";
+  }, 3000);
+}
+</script>
+
+</body>
+</html>
