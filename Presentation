@@ -1,0 +1,496 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfólio pessoal de Carlos Eduardo Carvalho, estudante iniciante de programação.">
+    <title>Carlos Eduardo | Portfólio</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --background: #08070b;
+            --surface: #121016;
+            --purple: #a855f7;
+            --purple-light: #d8b4fe;
+            --text: #f5f0fa;
+            --muted: #aaa1b5;
+            --border: #30243b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--background);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 15% 10%,
+                rgba(110, 35, 150, 0.15), transparent 40%),
+                radial-gradient(ellipse at 90% 80%,
+                rgba(75, 25, 110, 0.12), transparent 35%);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: min(1050px, 90%);
+            margin: auto;
+        }
+
+        header {
+            border-bottom: 1px solid var(--border);
+            background: rgba(8, 7, 11, 0.9);
+        }
+
+        nav {
+            min-height: 75px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            color: var(--purple-light);
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 22px;
+            list-style: none;
+        }
+
+        nav a {
+            color: var(--muted);
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--purple-light);
+        }
+
+        .hero {
+            min-height: 78vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 90px 0;
+        }
+
+        .symbol {
+            color: var(--purple);
+            font-size: 2rem;
+            margin-bottom: 18px;
+        }
+
+        .eyebrow {
+            color: var(--purple-light);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Cinzel', serif;
+            font-weight: 600;
+        }
+
+        h1 {
+            font-size: clamp(2.3rem, 7vw, 4.8rem);
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        h1 span {
+            display: block;
+            color: var(--purple-light);
+        }
+
+        .hero p {
+            color: var(--muted);
+            max-width: 580px;
+            margin-bottom: 32px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 25px;
+            border: 1px solid var(--purple);
+            color: var(--purple-light);
+            transition: 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .button:hover {
+            background: var(--purple);
+            color: white;
+            box-shadow: 0 0 25px rgba(168, 85, 247, 0.25);
+        }
+
+        section {
+            padding: 75px 0;
+            scroll-margin-top: 25px;
+        }
+
+        .section-title {
+            font-size: clamp(1.7rem, 4vw, 2.3rem);
+            margin-bottom: 12px;
+        }
+
+        .section-subtitle {
+            color: var(--muted);
+            margin-bottom: 32px;
+        }
+
+        .line {
+            width: 65px;
+            height: 2px;
+            background: var(--purple);
+            margin: 18px 0 28px;
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 28px;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: var(--purple);
+        }
+
+        .about-text {
+            color: var(--muted);
+            max-width: 780px;
+        }
+
+        .about-text strong {
+            color: var(--purple-light);
+            font-weight: 500;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .card h3 {
+            color: var(--purple-light);
+            font-size: 1.15rem;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .icon {
+            font-size: 1.6rem;
+            margin-bottom: 12px;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill {
+            border: 1px solid var(--border);
+            background: var(--surface);
+            color: var(--purple-light);
+            padding: 10px 16px;
+            font-size: 0.88rem;
+        }
+
+        .dream {
+            border-left: 3px solid var(--purple);
+        }
+
+        .dream h3 {
+            margin-bottom: 15px;
+        }
+
+        .dream p + p {
+            margin-top: 12px;
+        }
+
+        .thanks {
+            text-align: center;
+            padding: 100px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            background: rgba(18, 16, 22, 0.65);
+        }
+
+        .thanks h2 {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            color: var(--purple-light);
+            margin-bottom: 18px;
+        }
+
+        .thanks p {
+            color: var(--muted);
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px 0;
+            color: var(--muted);
+            font-size: 0.8rem;
+        }
+
+        footer span {
+            color: var(--purple-light);
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                flex-direction: column;
+                justify-content: center;
+                padding: 18px 0;
+            }
+
+            nav ul {
+                justify-content: center;
+                gap: 12px 18px;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                min-height: 70vh;
+            }
+
+            section {
+                padding: 55px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="container">
+            <a href="#inicio" class="logo">✦ C.E.C.</a>
+
+            <ul>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#sobre">Sobre mim</a></li>
+                <li><a href="#habilidades">Habilidades</a></li>
+                <li><a href="#sonhos">Sonhos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="hero container" id="inicio">
+            <div class="symbol">☽ ✦ ☾</div>
+            <div class="eyebrow">Meu portfólio pessoal</div>
+
+            <h1>
+                Carlos Eduardo
+                <span>Carvalho</span>
+            </h1>
+
+            <p>
+                Um iniciante na programação, explorando o mundo da
+                tecnologia, desenvolvendo habilidades e construindo
+                o caminho para o meu futuro.
+            </p>
+
+            <a href="#sobre" class="button">Conheça minha história ↓</a>
+        </section>
+
+        <section id="sobre">
+            <div class="container">
+                <h2 class="section-title">Sobre Mim</h2>
+                <div class="line"></div>
+
+                <div class="about-text">
+                    <p>
+                        Olá! Meu nome é <strong>Carlos Eduardo Carvalho</strong>,
+                        tenho <strong>16 anos</strong> e estou começando
+                        minha jornada no mundo da programação.
+                    </p>
+
+                    <br>
+
+                    <p>
+                        Atualmente, tenho conhecimentos básicos de
+                        <strong>HTML, Photoshop e Microsoft Office</strong>.
+                        Estou dando meus primeiros passos na tecnologia,
+                        aprendendo coisas novas e buscando evoluir tanto
+                        pessoalmente quanto profissionalmente.
+                    </p>
+
+                    <br>
+
+                    <p>
+                        Acredito que cada novo conhecimento é uma
+                        oportunidade de crescer, descobrir novas
+                        possibilidades e me aproximar dos meus objetivos.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="habilidades">
+            <div class="container">
+                <h2 class="section-title">Minhas Habilidades</h2>
+                <p class="section-subtitle">
+                    Conhecimentos e qualidades que fazem parte da minha jornada.
+                </p>
+
+                <div class="grid">
+                    <article class="card">
+                        <div class="icon">⌨</div>
+                        <h3>Tecnologia</h3>
+                        <p>
+                            Conhecimentos básicos de HTML, criação de
+                            páginas web e utilização de ferramentas digitais.
+                        </p>
+                    </article>
+
+                    <article class="card">
+                        <div class="icon">✧</div>
+                        <h3>Criatividade</h3>
+                        <p>
+                            Gosto de explorar ideias, imaginar possibilidades
+                            e encontrar maneiras diferentes de criar.
+                        </p>
+                    </article>
+
+                    <article class="card">
+                        <div class="icon">☾</div>
+                        <h3>Comunicação</h3>
+                        <p>
+                            Busco expressar minhas ideias com clareza,
+                            ouvir outras pessoas e aprender com elas.
+                        </p>
+                    </article>
+
+                    <article class="card">
+                        <div class="icon">♜</div>
+                        <h3>Trabalho em equipe</h3>
+                        <p>
+                            Valorizo a colaboração, o respeito e a troca
+                            de conhecimentos para alcançar objetivos.
+                        </p>
+                    </article>
+                </div>
+
+                <div style="margin-top: 30px;">
+                    <h3 style="margin-bottom: 18px;">Conhecimentos</h3>
+
+                    <div class="skills">
+                        <span class="skill">HTML básico</span>
+                        <span class="skill">Photoshop</span>
+                        <span class="skill">Microsoft Office</span>
+                        <span class="skill">Inglês básico</span>
+                        <span class="skill">Criatividade</span>
+                        <span class="skill">Comunicação</span>
+                        <span class="skill">Trabalho em equipe</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sonhos">
+            <div class="container">
+                <h2 class="section-title">Meus Sonhos</h2>
+                <div class="line"></div>
+
+                <div class="card dream">
+                    <h3>☽ Construindo meu futuro</h3>
+
+                    <p>
+                        Um dos meus maiores sonhos é ter uma vida tranquila,
+                        com poucos problemas, estabilidade e liberdade para
+                        aproveitar as coisas que realmente importam.
+                    </p>
+
+                    <p>
+                        Também sonho em trabalhar na
+                        <strong style="color: var(--purple-light);">
+                            Microsoft
+                        </strong>,
+                        uma empresa que representa uma grande oportunidade
+                        de crescimento na área da tecnologia.
+                    </p>
+
+                    <p>
+                        Sei que ainda estou no começo, mas quero continuar
+                        estudando, praticando programação e desenvolvendo
+                        minhas habilidades para transformar esses sonhos
+                        em objetivos possíveis.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="thanks">
+            <div class="container">
+                <div class="symbol">✦ ☽ ✦</div>
+
+                <h2>Obrigado pela atenção!</h2>
+
+                <p>
+                    Este é apenas o começo da minha jornada.
+                    O futuro ainda está sendo escrito.
+                </p>
+
+                <p style="margin-top: 20px; color: var(--purple-light);">
+                    — Carlos Eduardo Carvalho
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>
+            © 2026 <span>Carlos Eduardo Carvalho</span>.
+            Feito com dedicação e HTML + CSS.
+        </p>
+    </footer>
+
+</body>
+</html>
